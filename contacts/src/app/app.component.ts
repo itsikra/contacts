@@ -6,7 +6,8 @@ import { Http } from '@angular/http'
    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-   constructor(private _httpService: Http) { }
+    constructor(private _httpService: Http) { }
+    title: string = "All i did was this";
    apiValues: string[] = [];
    ngOnInit() {
       this._httpService.get('/api/values').subscribe(values => {

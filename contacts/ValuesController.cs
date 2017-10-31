@@ -15,7 +15,7 @@ namespace contacts
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Great", "Job" };
+            return new string[] { "To", "Be", "Continued" };
         }
 
         //// GET api/values/5

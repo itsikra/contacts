@@ -1,6 +1,38 @@
 <h1>{{title}}</h1>
-<h2>Simple contacts manager</h2>
-<h2>Hello after sync</h2>
-<ul *ngFor="let value of apiValues">
-  <li>{{value}}</li>
-</ul>
+<h2>Sample contact manager</h2>
+
+
+<p> </p>
+<div>
+  <input class="form-control" style="width:auto;display:inline" ng-model="Contact.firstName" placeholder="First name">
+  <input class="form-control" style="width:auto;display:inline" ng-model="Contact.lastName" placeholder="Last name">
+  <input class="form-control" style="width:auto;display:inline" ng-model="Contact.email" placeholder="Email">
+  <input class="form-control" style="width:auto;display:inline" ng-model="Contact.phone" placeholder="Phone">
+  <button type="button" class="btn btn-warning"
+          ng-reflect-trigger=""
+          ng-reflect-centered="false"
+          style="display:inline;height:50px;width:50px;border-radius:25px;border-width:unset;text-align:center;font-size:x-large"
+          (click)="buttonClicked()">+</button>
+  <p style="padding-top:1cm">
+
+  </p>
+</div>
+<p> </p>
+<input class="form-control" style="width:80%" ng-model="search.name" placeholder="Search for...">
+  
+<table class="table" style="width:80%" border="1" cellpadding="30">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>phone</th>
+  </tr>
+  <tr *ngFor="let value of apiValues">
+    <td>{{value.firstName}}</td>
+    <td>{{value.lastName}}</td>
+    <td>{{value.email}}</td>
+    <td>{{value.phone}}</td>
+  </tr>
+
+</table>
+

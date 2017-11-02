@@ -21,8 +21,8 @@ namespace contacts
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<MScontacts_dnContext>(options =>
-      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+      //services.AddDbContext<MScontacts_DbContext>(options =>
+      //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
       services.AddMvc();
     }
 

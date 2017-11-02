@@ -23,7 +23,7 @@ namespace contacts
         var services = scope.ServiceProvider;
         try
         {
-          var context = services.GetRequiredService<MScontacts_dnContext>();
+          var context = services.GetRequiredService<MScontacts_DbContext>();
           DbInitializer.Initialize(context);
         }
         catch (Exception ex)

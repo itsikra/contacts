@@ -8,7 +8,7 @@ import { Http } from '@angular/http'
 
 export class AppComponent implements OnInit {
     constructor(private _httpService: Http) { }
-   public  title: string = "Hello!";
+   public  title: string = "WELCOME";
    private apiValues: Contact[] = [];
    private newContact: Contact = {
        FirstName: "",LastName: "",Email: "",Phone:""

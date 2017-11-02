@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using contacts.Models;
+using contacts.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,6 +19,9 @@ namespace contacts
     [HttpGet]
         public IEnumerable<Contact> Get()
         {
+
+      MScontacts_DbContext _context = new MScontacts_DbContext();
+
       Contact a = new Contact();
       a.FirstName = "fname1";
       a.LastName = "lname1";

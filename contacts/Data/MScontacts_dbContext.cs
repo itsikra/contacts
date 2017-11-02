@@ -4,7 +4,7 @@ using contacts.Models;
 
 namespace contacts.Data
 {
-  public class MScontacts_dnContext : DbContext
+  public class MScontacts_DbContext : DbContext
   {
     public DbSet<Contact> Contacts { get; set; }
    

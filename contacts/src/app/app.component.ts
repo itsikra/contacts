@@ -25,11 +25,22 @@ export class AppComponent implements OnInit {
    }
 
    buttonClicked(contact) {
-       console.log(contact.firstName);
-       this._httpService.post('/api/values', contact).subscribe(values => {
-           this.apiValues = values.json() as Contact[];
-           console.log(this.apiValues);
-       });
+       if (contact.firstName == null || !(contact.firstName.replace(/\s/g, '').length) || 
+           contact.lastName == null || !(contact.lastName.replace(/\s/g, '').length) || 
+           contact.phone == null || !(contact.phone.replace(/\s/g, '').length) )
+           alert("Please enter all required fields");
+       else {
+           console.log(contact.firstName);
+           this._httpService.post('/api/values', contact).subscribe(values => {
+               this.apiValues = values.json() as Contact[];
+               contact.firstName = null;
+               contact.lastName = null;
+               contact.phone = null;
+               contact.email = null;
+
+               console.log(this.apiValues);
+           });
+       }
 
        //this._httpService.get('/api/values').subscribe(values => {
        //    this.apiValues = values.json() as Contact[];

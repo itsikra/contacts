@@ -13,30 +13,34 @@ namespace contacts
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-    List<Contact> contacts = new List<Contact>();
+    public static List<Contact> contacts = new List<Contact>();
+
+
+
 
     // GET: api/values
     [HttpGet]
         public IEnumerable<Contact> Get()
         {
-
-      MScontacts_DbContext _context = new MScontacts_DbContext();
-
-      Contact a = new Contact();
-      a.FirstName = "fname1";
-      a.LastName = "lname1";
-      a.Email = "fname1.lname1@gmail.com";
-      a.Phone = "999999";
-      contacts.Add(a);
-      Contact b = new Contact();
-      b.FirstName = "fname2";
-      b.LastName = "lname2";
-      b.Email = "fname2.lname2@gmail.com";
-      b.Phone = "999999";
-      contacts.Add(b);
+          
+            MScontacts_DbContext _context = new MScontacts_DbContext();
 
 
-      return contacts.AsEnumerable() ;
+      //Contact a = new Contact();
+      //a.FirstName = "Dan";
+      //a.LastName = "Hadari";
+      //a.Email = "DanHadari@gmail.com";
+      //a.Phone = "054-500000";
+      //contacts.Add(a);
+      //Contact b = new Contact();
+      //b.FirstName = "Itsik";
+      //b.LastName = "Rafael";
+      //b.Email = "itsik.mta@gmail.com";
+      //b.Phone = "050-4401201";
+      //contacts.Add(b);
+
+      
+            return Database.contactList.AsEnumerable() ;
         }
 
         //// GET api/values/5
@@ -48,10 +52,17 @@ namespace contacts
 
          //POST api/values
         [HttpPost]
-        public void Post([FromBody]Contact value)
+        public IEnumerable<Contact> Post([FromBody]Contact value)
         {
-            contacts.Add(value);
-        }
+            Database.contactList.Add(value);
+            //Contact c = new Contact();
+            //c.FirstName = "yyyyy";
+            //c.LastName = "Rafael";
+            //c.Email = "itsik.mta@gmail.com";
+            //c.Phone = "050-4401201";
+            //contacts.Add(c);
+            return Database.contactList.AsEnumerable();
+    }
 
         //// PUT api/values/5
         //[HttpPut("{id}")]

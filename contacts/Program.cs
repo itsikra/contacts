@@ -9,13 +9,27 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using contacts.Data;
+using contacts.Models;
 
 namespace contacts
 {
   public class Program
   {
+
+    public Contact[] contactLst;
+    List<Contact> contactList2 = new List<Contact>();
+
+
+    public static IConfiguration Configuration { get; set; }
+
     public static void Main(string[] args)
     {
+      var builder = new ConfigurationBuilder()
+           .SetBasePath(Directory.GetCurrentDirectory())
+           .AddJsonFile("appsettings.json");
+
+      Configuration = builder.Build();
+
       var host = BuildWebHost(args);
 
       using (var scope = host.Services.CreateScope())

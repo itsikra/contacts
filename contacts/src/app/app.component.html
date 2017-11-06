@@ -4,15 +4,16 @@
 <label style="color:orangered">Want to add a contact?</label>
 <p> </p>
 <form #f="ngForm" (ngSubmit)="buttonClicked()">
-  <input class="form-control" style="width:auto;display:inline" name="firstName" [(ngModel)]="newContact.firstName" placeholder="First name">
+  <input class="form-control" required style="width:auto;display:inline" name="firstName" [(ngModel)]="newContact.firstName" ngControl="firstame" placeholder="First name">
+  <label style="color:red">*</label>
   <input class="form-control" style="width:auto;display:inline" name="lastName" [(ngModel)]="newContact.lastName" placeholder="Last name">
-  <input class="form-control" style="width:auto;display:inline" name="email" [(ngModel)]="newContact.email" placeholder="Email">
-  <input class="form-control" style="width:auto;display:inline" name="phone" [(ngModel)]="newContact.phone" placeholder="Phone">
+  <input class="form-control" required style="width:auto;display:inline" name="email" [(ngModel)]="newContact.email" placeholder="Email">
+  <input class="form-control" required style="width:auto;display:inline" name="phone" [(ngModel)]="newContact.phone" placeholder="Phone">
   <button type="button" class="btn btn-warning"
           ng-reflect-trigger=""
           ng-reflect-centered="false"
           style="display:inline;height:50px;width:50px;border-radius:25px;border-width:unset;text-align:center;font-size:x-large"
-          (click)="buttonClicked()">
+          (click)="buttonClicked(newContact)">
     +
   </button>
   <p style="padding-top:1cm">
@@ -25,7 +26,7 @@
   <p style="padding-top:1cm">
 
 </p>  
-<table class="table" style="width:80%" border="1" cellpadding="30">
+<table ng-Table="tablelist" class="table" style="width:80%" border="1" cellpadding="20">
   <tr>
     <th>Firstname</th>
     <th>Lastname</th>

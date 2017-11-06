@@ -24,8 +24,32 @@ export class AppComponent implements OnInit {
       });
    }
 
-   buttonClicked() {
-       console.log(this.firstName);
+   buttonClicked(contact) {
+       console.log(contact.firstName);
+       this._httpService.post('/api/values', contact).subscribe(values => {
+           this.apiValues = values.json() as Contact[];
+           console.log(this.apiValues);
+       });
+
+       //this._httpService.get('/api/values').subscribe(values => {
+       //    this.apiValues = values.json() as Contact[];
+       //    console.log(this.apiValues);
+
+       //    //this.apiValues.push({ FirstName: "w", LastName: "e", Email: "r", Phone: "t" });
+       //    //this.apiValues.push({ FirstName: "wdd", LastName: "esfgsd", Email: "64r", Phone: "4" });
+       //    //console.log(this.apiValues);
+       //});
+       
+           //values => {
+           //this.apiValues = values.json() as Contact[];
+           //console.log(this.apiValues);
+
+       
+       //this._httpService.get('/api/values').subscribe(values => {
+       //    this.apiValues = values.json() as Contact[];
+       //    console.log(this.apiValues);
+       //});
+
        //this._httpService.post('/api/values').subscribe(value => {
        //    this.apiValues = values.json() as Contact[];
        //    console.log(this.apiValues);

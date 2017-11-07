@@ -8,6 +8,7 @@ import { Http } from '@angular/http'
 })
 
 export class AppComponent implements OnInit {
+    
     constructor(private _httpService: Http) { }
     public title: string = "WELCOME";
     private apiValues: Contact[] = [];
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
     }
 
     buttonClicked(contact) {
+        
         //console.log(this.searchPhrase);
         if (contact.first == null || !(contact.first.replace(/\s/g, '').length) ||
             contact.last == null || !(contact.last.replace(/\s/g, '').length) ||
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
         else {
             console.log("first:" + contact.first);
             this._httpService.post('/api/values', contact).subscribe(values => {
-                this.apiValues = values.json() as Contact[];
+                this.apiValues = this.allContacts = values.json() as Contact[];
                 contact.first = null;
                 contact.last = null;
                 contact.phone = null;
@@ -50,12 +52,15 @@ export class AppComponent implements OnInit {
 
                 console.log(this.apiValues);
             });
+       
         }
     }
 
     onSearch(event: any) { // without type info
+
+        
         this.searchPhrase = event.target.value;
-        var phrase = event.target.value;
+        var phrase = this.searchPhrase.toLowerCase();
 
         console.log(phrase);
         this.filtered = [];
@@ -66,7 +71,10 @@ export class AppComponent implements OnInit {
                 console.log(c);
                 var name = c.first;
                 console.log(name);
-                if (c.first.toLowerCase().indexOf(phrase) != -1) {
+                if ((c.first.toLowerCase().indexOf(phrase) != -1) ||
+                    (c.last.toLowerCase().indexOf(phrase) != -1) ||
+                    (c.email.toLowerCase().indexOf(phrase) != -1) ||
+                    (c.phone.toLowerCase().indexOf(phrase) != -1)) {
                     this.filtered.push(c);
                 }
             }

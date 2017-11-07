@@ -45,16 +45,6 @@ namespace contacts
       app.UseDefaultFiles();
       app.UseStaticFiles();
 
-
-      //if (env.IsDevelopment())
-      //{
-      //    app.UseDeveloperExceptionPage();
-      //}
-
-      //app.Run(async (context) =>
-      //{
-      //    await context.Response.WriteAsync("Hello World!");
-      //});
     }
   }
 }

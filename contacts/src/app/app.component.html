@@ -5,7 +5,7 @@
 <label style="color:orangered;font-size:large">Want to add a contact?</label>
 <p> </p>
 <form #f="ngForm" (ngSubmit)="buttonClicked(newContact)">
-  <input class="form-control" required style="width:15%;display:inline" name="firstName" [(ngModel)]="newContact.firstName" ngControl="firstName"  placeholder="First name">
+  <input class="form-control" required style="width:15%;display:inline" name="firstName" [(ngModel)]="newContact.firstName"   placeholder="First name">
   <label style="color:red;padding-right:5px">*</label>
   <input class="form-control" required style="width:15%;display:inline" name="lastName" [(ngModel)]="newContact.lastName" placeholder="Last name">
   <label style="color:red;padding-right:5px">*</label>

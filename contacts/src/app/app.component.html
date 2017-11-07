@@ -2,7 +2,7 @@
 <h2 style="padding-top:10px;padding-left:10px">Sample contact manager</h2>
 
 <div style="padding:10px">
-<label style="color:orangered">Want to add a contact?</label>
+<label style="color:orangered;font-size:large">Want to add a contact?</label>
 <p> </p>
 <form #f="ngForm" (ngSubmit)="buttonClicked(newContact)">
   <input class="form-control" required style="width:15%;display:inline" name="firstName" [(ngModel)]="newContact.firstName" ngControl="firstName"  placeholder="First name">
@@ -20,11 +20,13 @@
           (click)="buttonClicked(newContact)">
     +
   </button>
+  <p></p>
+  <label style="color:green;font-size:large">Or just search for one?</label>
+  <input (keyup)="onSearch($event)" class="form-control" style="width:80%;padding:10px" name="searchPhrase" ng-model="searchPhrase" placeholder="Search for...">
+  <p style="padding:10px"></p>
 </form>
 
-<label style="color:green;padding:10px">Or just search for one?</label>
-<input class="form-control" style="width:80%;padding:10px" ng-model="search.name" placeholder="Search for...">
- <p style="padding:10px"></p>
+
 <table ng-Table="tablelist" class="table" style="width:80%" border="1" cellpadding="20">
   <tr>
     <th style="width:20%;background-color:dodgerblue;color:white">Firstname</th>

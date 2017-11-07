@@ -13,24 +13,31 @@ export class AppComponent implements OnInit {
    private newContact: Contact = {
        FirstName: "",LastName: "",Email: "",Phone:""
    };
+   private searchContact: Contact = {
+       FirstName: "", LastName: "", Email: "", Phone: ""
+   };
+
+
+   public searchPhrase: string = "";
    private firstName: string;
    private lastName: string;
    private email: string;
    private phone: string;
    ngOnInit() {
-      this._httpService.get('/api/values').subscribe(values => {
+       this._httpService.get('/api/values', null).subscribe(values => {
           this.apiValues = values.json() as Contact[];
           console.log(this.apiValues);
       });
    }
 
    buttonClicked(contact) {
+       //console.log(this.searchPhrase);
        if (contact.firstName == null || !(contact.firstName.replace(/\s/g, '').length) || 
            contact.lastName == null || !(contact.lastName.replace(/\s/g, '').length) || 
            contact.phone == null || !(contact.phone.replace(/\s/g, '').length) )
            alert("Please enter all required fields");
        else {
-           console.log(contact.firstName);
+           console.log("FirstName:" + contact.firstName);
            this._httpService.post('/api/values', contact).subscribe(values => {
                this.apiValues = values.json() as Contact[];
                contact.firstName = null;
@@ -67,6 +74,19 @@ export class AppComponent implements OnInit {
        //});
        //alert('clicked');
    }
+
+   onSearch(event: any) { // without type info
+       this.searchPhrase = event.target.value;
+       this.searchContact.FirstName = "A";
+       console.log(this.searchPhrase);
+       this._httpService.get('/api/values', "z").subscribe(values => {
+           this.apiValues = values.json() as Contact[];
+       });
+    }
+
+
+
+
 }
 
 export interface Contact {

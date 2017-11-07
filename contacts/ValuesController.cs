@@ -14,33 +14,42 @@ namespace contacts
     public class ValuesController : Controller
     {
     public static List<Contact> contacts = new List<Contact>();
-
-
-
+    
 
     // GET: api/values
     [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IEnumerable<Contact> Get(string searchPhrase)
         {
-          
-            MScontacts_DbContext _context = new MScontacts_DbContext();
+
+      //MScontacts_DbContext _context = new MScontacts_DbContext();
 
 
-      //Contact a = new Contact();
-      //a.FirstName = "Dan";
-      //a.LastName = "Hadari";
-      //a.Email = "DanHadari@gmail.com";
-      //a.Phone = "054-500000";
-      //contacts.Add(a);
-      //Contact b = new Contact();
-      //b.FirstName = "Itsik";
-      //b.LastName = "Rafael";
-      //b.Email = "itsik.mta@gmail.com";
-      //b.Phone = "050-4401201";
-      //contacts.Add(b);
+      //Contact a = new Contact();       //a.FirstName = "Dan";       //a.LastName = "Hadari";       //a.Email = "DanHadari@gmail.com";
+      //a.Phone = "054-500000";       //contacts.Add(a);      //Contact b = new Contact();       //b.FirstName = "Itsik";
+      //b.LastName = "Rafael";      //b.Email = "itsik.mta@gmail.com";      //b.Phone = "050-4401201";      //contacts.Add(b);
 
+      //string searchPhrase = searchContact.FirstName;
+      //searchPhrase = "a";
+      //Console.WriteLine("From c: "+searchPhrase);
+
+      if (!string.IsNullOrEmpty(searchPhrase))
+      {
+        return Database.contactList
+          .Where(t => (t.FirstName.ToLower().Contains(searchPhrase.ToLower())) ||
+                      (t.LastName.ToLower().Contains(searchPhrase.ToLower())) ||
+                      (t.Email.ToLower().Contains(searchPhrase.ToLower())) ||
+                      (t.Phone.ToLower().Contains(searchPhrase.ToLower())))
+           .OrderBy(t => t.FirstName)
+           .ThenBy(t => t.LastName);
+
+      }
+      else
+      {
+        return Database.contactList.OrderBy(t => t.FirstName).ThenBy(t => t.LastName).AsEnumerable();
+      }
+
+     // return Database.contactList.AsEnumerable() 
       
-            return Database.contactList.AsEnumerable() ;
         }
 
         //// GET api/values/5
@@ -55,13 +64,37 @@ namespace contacts
         public IEnumerable<Contact> Post([FromBody]Contact value)
         {
             Database.contactList.Add(value);
-            //Contact c = new Contact();
-            //c.FirstName = "yyyyy";
-            //c.LastName = "Rafael";
-            //c.Email = "itsik.mta@gmail.com";
-            //c.Phone = "050-4401201";
-            //contacts.Add(c);
-            return Database.contactList.AsEnumerable();
+      //Contact c = new Contact();
+      //c.FirstName = "yyyyy";
+      //c.LastName = "Rafael";
+      //c.Email = "itsik.mta@gmail.com";
+      //c.Phone = "050-4401201";
+      //contacts.Add(c);
+      //string searchPhrase = "a";
+
+      List<Contact> Filtered = new List<Contact>();
+      //Filtered =
+      //searchPhrase = "a";
+      //if (!string.IsNullOrEmpty(searchPhrase))
+      //{
+      //  return Database.contactList
+      //    .Where(t => (t.FirstName.ToLower().Contains(searchPhrase.ToLower())) ||
+      //                (t.LastName.ToLower().Contains(searchPhrase.ToLower())) ||
+      //                (t.Email.ToLower().Contains(searchPhrase.ToLower())) ||
+      //                (t.Phone.ToLower().Contains(searchPhrase.ToLower())))
+      //     .OrderBy(t => t.FirstName)
+      //     .ThenBy(t => t.LastName);
+
+      //}
+      //else
+      //{
+        return Database.contactList.OrderBy(t => t.FirstName).ThenBy(t => t.LastName).AsEnumerable();
+      //}
+
+      //var res = from item in Database.contactList
+      //          select item
+      //          where ()
+      //return Database.contactList.AsEnumerable();
     }
 
         //// PUT api/values/5

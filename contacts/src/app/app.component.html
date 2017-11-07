@@ -1,17 +1,16 @@
-<h1 style="padding-top:10px;padding-left:10px">{{title}}</h1>
-<h2 style="padding-top:10px;padding-left:10px">Sample contact manager</h2>
+<nav class="navbar navbar-inverse" style="padding-top:10px;padding-left:10px;font-size:x-large;color:white">{{title}}</nav>
 
 <div style="padding:10px">
 <label style="color:orangered;font-size:large">Want to add a contact?</label>
 <p> </p>
 <form #f="ngForm" (ngSubmit)="buttonClicked(newContact)">
-  <input class="form-control" required style="width:15%;display:inline" name="first" [(ngModel)]="newContact.first"   placeholder="First name">
+  <input class="form-control" required style="width:18%;display:inline" name="first" [(ngModel)]="newContact.first"   placeholder="First name">
   <label style="color:red;padding-right:5px">*</label>
-  <input class="form-control" required style="width:15%;display:inline" name="last" [(ngModel)]="newContact.last" placeholder="Last name">
+  <input class="form-control" required style="width:18%;display:inline" name="last" [(ngModel)]="newContact.last" placeholder="Last name">
   <label style="color:red;padding-right:5px">*</label>
-  <input class="form-control"  style="width:15%;display:inline" name="email" [(ngModel)]="newContact.email" placeholder="email">
+  <input class="form-control"  style="width:18%;display:inline" name="email" [(ngModel)]="newContact.email" placeholder="email">
   <label style="color:red;padding-right:10px"></label>
-  <input class="form-control" required style="width:15%;display:inline" name="phone" [(ngModel)]="newContact.phone" placeholder="phone">
+  <input class="form-control" required style="width:18%;display:inline" name="phone" [(ngModel)]="newContact.phone" placeholder="phone">
   <label style="color:red;padding-right:10px">*</label>
   <button type="button" class="btn btn-warning"
           ng-reflect-trigger=""
@@ -27,7 +26,7 @@
 </form>
 
 
-<table ng-Table="tablelist" class="table" style="width:80%" border="1" cellpadding="20">
+<table ng-Table="tablelist" class="table table-striped table-bordered table-hover table-condensed" style="width:80%" border="1" cellpadding="20">
   <tr>
     <th style="width:20%;background-color:dodgerblue;color:white">first</th>
     <th style="width:20%;background-color:dodgerblue;color:white">last</th>

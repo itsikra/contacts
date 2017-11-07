@@ -10,7 +10,7 @@ import { Http } from '@angular/http'
 export class AppComponent implements OnInit {
     
     constructor(private _httpService: Http) { }
-    public title: string = "WELCOME";
+    public title: string = "Sample contact manager";
     private apiValues: Contact[] = [];
     private allContacts: Contact[];
     private filtered: Contact[] = [];

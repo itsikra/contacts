@@ -12,17 +12,17 @@ export class AppComponent implements OnInit {
     public title: string = "WELCOME";
     private apiValues: Contact[] = [];
     private allContacts: Contact[];
-    private filtered: Contact[];
+    private filtered: Contact[] = [];
     private newContact: Contact = {
-        FirstName: "", LastName: "", Email: "", Phone: ""
+        first: "", last: "", email: "", phone: ""
     };
     private searchContact: Contact = {
-        FirstName: "", LastName: "", Email: "", Phone: ""
+        first: "", last: "", email: "", phone: ""
     };
 
     public searchPhrase: string = "";
-    private firstName: string;
-    private lastName: string;
+    private first: string;
+    private last: string;
     private email: string;
     private phone: string;
 
@@ -35,93 +35,55 @@ export class AppComponent implements OnInit {
 
     buttonClicked(contact) {
         //console.log(this.searchPhrase);
-        if (contact.firstName == null || !(contact.firstName.replace(/\s/g, '').length) ||
-            contact.lastName == null || !(contact.lastName.replace(/\s/g, '').length) ||
+        if (contact.first == null || !(contact.first.replace(/\s/g, '').length) ||
+            contact.last == null || !(contact.last.replace(/\s/g, '').length) ||
             contact.phone == null || !(contact.phone.replace(/\s/g, '').length))
             alert("Please enter all required fields");
         else {
-            console.log("FirstName:" + contact.firstName);
+            console.log("first:" + contact.first);
             this._httpService.post('/api/values', contact).subscribe(values => {
                 this.apiValues = values.json() as Contact[];
-                contact.firstName = null;
-                contact.lastName = null;
+                contact.first = null;
+                contact.last = null;
                 contact.phone = null;
                 contact.email = null;
 
                 console.log(this.apiValues);
             });
         }
-
-        //this._httpService.get('/api/values').subscribe(values => {
-        //    this.apiValues = values.json() as Contact[];
-        //    console.log(this.apiValues);
-
-        //    //this.apiValues.push({ FirstName: "w", LastName: "e", Email: "r", Phone: "t" });
-        //    //this.apiValues.push({ FirstName: "wdd", LastName: "esfgsd", Email: "64r", Phone: "4" });
-        //    //console.log(this.apiValues);
-        //});
-
-        //values => {
-        //this.apiValues = values.json() as Contact[];
-        //console.log(this.apiValues);
-
-
-        //this._httpService.get('/api/values').subscribe(values => {
-        //    this.apiValues = values.json() as Contact[];
-        //    console.log(this.apiValues);
-        //});
-
-        //this._httpService.post('/api/values').subscribe(value => {
-        //    this.apiValues = values.json() as Contact[];
-        //    console.log(this.apiValues);
-        //});
-        //alert('clicked');
     }
 
     onSearch(event: any) { // without type info
         this.searchPhrase = event.target.value;
         var phrase = event.target.value;
-        
+
         console.log(phrase);
-        
-        
+        this.filtered = [];
 
         //console.log(filtered);
-        if (phrase)
+        if (phrase) {
             for (let c of this.allContacts) {
                 console.log(c);
-                var name = c.FirstName;
+                var name = c.first;
                 console.log(name);
-                if (c.FirstName.toLowerCase().indexOf(phrase) != -1) {
+                if (c.first.toLowerCase().indexOf(phrase) != -1) {
                     this.filtered.push(c);
                 }
             }
-
-            //this.filtered = this.filtered.filter(c => c.LastName.indexOf(phrase) != -1);
-
-        this.apiValues = this.filtered;
-        console.log(this.apiValues);
-
-
-
-
-        //this.searchPhrase = event.target.value;
-        //this.searchContact.FirstName = "A";
-        //console.log(this.searchPhrase);
-        //this._httpService.get('/api/values/', "z").subscribe(values => {
-        //    this.apiValues = values.json() as Contact[];
-        //});
+            this.apiValues = this.filtered;
+        }
+        else {
+            this.apiValues = this.allContacts;
+        }
     }
-
-    
 }
 
 
 
 export interface Contact {
-    FirstName: string;
-    LastName: string;
-    Email: string;
-    Phone: string;
+    first: string;
+    last: string;
+    email: string;
+    phone: string;
 
 }

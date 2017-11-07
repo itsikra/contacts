@@ -20,14 +20,14 @@ namespace contacts.Data
 
       var contacts = new Contact[]
       {
-            //new Contact{FirstName="Carson"  ,LastName="Alexander" ,Email="2005-09-01", Phone="0500000000"},
-            //new Contact{FirstName="Meredith",LastName="Alonso"    ,Email="2002-09-01", Phone="0500000001"},
-            //new Contact{FirstName="Arturo"  ,LastName="Anand"     ,Email="2003-09-01", Phone="0500000002"},
-            //new Contact{FirstName="Gytis"   ,LastName="Barzdukas" ,Email="2002-09-01", Phone="0500000003"},
-            //new Contact{FirstName="Yan"     ,LastName="Li"        ,Email="2002-09-01", Phone="0500000004"},
-            //new Contact{FirstName="Peggy"   ,LastName="Justice"   ,Email="2001-09-01", Phone="0500000005"},
-            //new Contact{FirstName="Laura"   ,LastName="Norman"    ,Email="2003-09-01", Phone="0500000006"},
-            //new Contact{FirstName="Nino"    ,LastName="Olivetto"  ,Email="2005-09-01", Phone="0500000007"}
+            //new Contact{first="Carson"  ,last="Alexander" ,email="2005-09-01", phone="0500000000"},
+            //new Contact{first="Meredith",last="Alonso"    ,email="2002-09-01", phone="0500000001"},
+            //new Contact{first="Arturo"  ,last="Anand"     ,email="2003-09-01", phone="0500000002"},
+            //new Contact{first="Gytis"   ,last="Barzdukas" ,email="2002-09-01", phone="0500000003"},
+            //new Contact{first="Yan"     ,last="Li"        ,email="2002-09-01", phone="0500000004"},
+            //new Contact{first="Peggy"   ,last="Justice"   ,email="2001-09-01", phone="0500000005"},
+            //new Contact{first="Laura"   ,last="Norman"    ,email="2003-09-01", phone="0500000006"},
+            //new Contact{first="Nino"    ,last="Olivetto"  ,email="2005-09-01", phone="0500000007"}
       };
       foreach (Contact s in contacts)
       {
